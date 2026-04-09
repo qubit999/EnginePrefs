@@ -1,0 +1,54 @@
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    width: 240px;
+    padding: 14px;
+    font-family: system-ui;
+    text-align: center;
+}
+
+.title {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.description {
+    font-size: 0.8em;
+    opacity: 0.7;
+    margin: 0 0 10px;
+    line-height: 1.4;
+}
+
+.url {
+    font-size: 0.85em;
+    word-break: break-all;
+    margin: 0 0 8px;
+    font-weight: 500;
+    padding: 6px 8px;
+    background: rgba(128, 128, 128, 0.1);
+    border-radius: 6px;
+    display: none;
+}
+
+.url.active {
+    display: block;
+}
+
+.url.inactive {
+    display: block;
+    opacity: 0.5;
+    font-weight: 400;
+}
+
+.hint {
+    font-size: 0.75em;
+    opacity: 0.45;
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Dark mode styles if needed */
+}

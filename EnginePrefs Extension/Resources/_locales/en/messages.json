@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "EnginePrefs",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "Redirect Safari searches to your custom search engine.",
+        "description": "Description of what the extension does."
+    }
+}
