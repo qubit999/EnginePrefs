@@ -39,13 +39,10 @@ jobs:
 
       - name: Patch project for unsigned build
         run: |
-          # Switch both targets from Automatic to Manual signing and clear the
-          # development team so Xcode doesn't try to resolve provisioning
-          # profiles.  Entitlements files are kept so the extension target still
-          # compiles; they are simply not signed.
           sed -i '' \
             -e 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' \
             -e 's/DEVELOPMENT_TEAM = [^;]*/DEVELOPMENT_TEAM = ""/g' \
+            -e 's/CODE_SIGN_ENTITLEMENTS = [^;]*;//g' \
             EnginePrefs.xcodeproj/project.pbxproj
 
       - name: Build archive
