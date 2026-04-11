@@ -37,6 +37,17 @@ jobs:
             echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Patch project for unsigned build
+        run: |
+          # Switch both targets from Automatic to Manual signing and clear the
+          # development team so Xcode doesn't try to resolve provisioning
+          # profiles.  Entitlements files are kept so the extension target still
+          # compiles; they are simply not signed.
+          sed -i '' \
+            -e 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' \
+            -e 's/DEVELOPMENT_TEAM = [^;]*/DEVELOPMENT_TEAM = ""/g' \
+            EnginePrefs.xcodeproj/project.pbxproj
+
       - name: Build archive
         run: |
           xcodebuild archive \
@@ -48,8 +59,9 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGN_IDENTITY="" \
-            CODE_SIGN_ENTITLEMENTS="" \
-            AD_HOC_CODE_SIGNING_ALLOWED=YES
+            CODE_SIGN_STYLE=Manual \
+            DEVELOPMENT_TEAM="" \
+            PROVISIONING_PROFILE_SPECIFIER=""
           # Verify archive was created
           ls /tmp/EnginePrefs.xcarchive
 
