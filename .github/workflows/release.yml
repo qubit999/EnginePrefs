@@ -10,6 +10,14 @@ on:
         description: 'Release version (e.g. 1.0.0)'
         required: true
         default: '1.0.0'
+      app_bundle_id:
+        description: 'Full app bundle ID for your Apple account (e.g. com.yourname.EnginePrefs)'
+        required: true
+        default: 'com.alexsla.EnginePrefs'
+      app_group_id:
+        description: 'Shared App Group ID for both targets (e.g. group.com.yourname.EnginePrefs)'
+        required: true
+        default: 'group.com.alexsla.EnginePrefs'
 
 jobs:
   build:
@@ -37,12 +45,95 @@ jobs:
             echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Patch project for unsigned build
+      - name: Resolve signing identifiers
+        id: identifiers
         run: |
-          sed -i '' \
-            -e 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' \
-            -e 's/DEVELOPMENT_TEAM = [^;]*/DEVELOPMENT_TEAM = ""/g' \
-            EnginePrefs.xcodeproj/project.pbxproj
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            APP_BUNDLE_ID='${{ github.event.inputs.app_bundle_id }}'
+            APP_GROUP_ID='${{ github.event.inputs.app_group_id }}'
+          else
+            APP_BUNDLE_ID='com.alexsla.EnginePrefs'
+            APP_GROUP_ID='group.com.alexsla.EnginePrefs'
+          fi
+
+          EXTENSION_BUNDLE_ID="${APP_BUNDLE_ID}.Extension"
+
+          echo "app_bundle_id=$APP_BUNDLE_ID" >> "$GITHUB_OUTPUT"
+          echo "extension_bundle_id=$EXTENSION_BUNDLE_ID" >> "$GITHUB_OUTPUT"
+          echo "app_group_id=$APP_GROUP_ID" >> "$GITHUB_OUTPUT"
+
+          echo "App bundle ID: $APP_BUNDLE_ID"
+          echo "Extension bundle ID: $EXTENSION_BUNDLE_ID"
+          echo "App Group ID: $APP_GROUP_ID"
+
+      - name: Patch project for sideload build
+        run: |
+          export APP_BUNDLE_ID='${{ steps.identifiers.outputs.app_bundle_id }}'
+          export EXTENSION_BUNDLE_ID='${{ steps.identifiers.outputs.extension_bundle_id }}'
+          export APP_GROUP_ID='${{ steps.identifiers.outputs.app_group_id }}'
+
+          python3 <<'PY'
+          import os
+          import plistlib
+          import re
+          from pathlib import Path
+
+          pbxproj_path = Path("EnginePrefs.xcodeproj/project.pbxproj")
+          pbxproj = pbxproj_path.read_text()
+
+          replacements = [
+              (
+                  r"PRODUCT_BUNDLE_IDENTIFIER = com\.alexsla\.EnginePrefs\.Extension;",
+                  f"PRODUCT_BUNDLE_IDENTIFIER = {os.environ['EXTENSION_BUNDLE_ID']};",
+              ),
+              (
+                  r"PRODUCT_BUNDLE_IDENTIFIER = com\.alexsla\.EnginePrefs;",
+                  f"PRODUCT_BUNDLE_IDENTIFIER = {os.environ['APP_BUNDLE_ID']};",
+              ),
+          ]
+
+          for pattern, replacement in replacements:
+              pbxproj, count = re.subn(pattern, replacement, pbxproj)
+              if count == 0:
+                  raise SystemExit(f"Failed to update project setting: {pattern}")
+
+          pbxproj = re.sub(
+              r"CODE_SIGN_STYLE = Automatic;",
+              "CODE_SIGN_STYLE = Manual;",
+              pbxproj,
+          )
+          pbxproj = re.sub(
+              r"DEVELOPMENT_TEAM = [^;]*;",
+              'DEVELOPMENT_TEAM = "";',
+              pbxproj,
+          )
+          pbxproj_path.write_text(pbxproj)
+
+          plist_paths = [
+              Path("EnginePrefs/Info.plist"),
+              Path("EnginePrefs Extension/Info.plist"),
+          ]
+          entitlements_paths = [
+              Path("EnginePrefs/EnginePrefs.entitlements"),
+              Path("EnginePrefs Extension/EnginePrefs_Extension.entitlements"),
+          ]
+
+          for plist_path in plist_paths:
+              with plist_path.open("rb") as handle:
+                  plist = plistlib.load(handle)
+              plist["AppGroupIdentifier"] = os.environ["APP_GROUP_ID"]
+              with plist_path.open("wb") as handle:
+                  plistlib.dump(plist, handle)
+
+          for entitlements_path in entitlements_paths:
+              with entitlements_path.open("rb") as handle:
+                  entitlements = plistlib.load(handle)
+              entitlements["com.apple.security.application-groups"] = [
+                  os.environ["APP_GROUP_ID"]
+              ]
+              with entitlements_path.open("wb") as handle:
+                  plistlib.dump(entitlements, handle)
+          PY
 
       - name: Build archive
         run: |
@@ -66,6 +157,11 @@ jobs:
           APP_PATH=$(find /tmp/EnginePrefs.xcarchive/Products/Applications -maxdepth 1 -name "*.app" | head -1)
           APPEX_PATH=$(find "$APP_PATH" -name "*.appex" | head -1)
 
+          if [ -z "$APP_PATH" ] || [ -z "$APPEX_PATH" ]; then
+            echo "Error: app or extension bundle not found in archive"
+            exit 1
+          fi
+
           echo "App:       $APP_PATH"
           echo "Extension: $APPEX_PATH"
 
@@ -83,6 +179,12 @@ jobs:
         run: |
           APP_PATH=$(find /tmp/EnginePrefs.xcarchive/Products/Applications -maxdepth 1 -name "*.app" | head -1)
           APPEX_PATH=$(find "$APP_PATH" -name "*.appex" | head -1)
+          APP_GROUP_ID='${{ steps.identifiers.outputs.app_group_id }}'
+
+          if [ -z "$APP_PATH" ] || [ -z "$APPEX_PATH" ]; then
+            echo "Error: app or extension bundle not found in archive"
+            exit 1
+          fi
 
           echo "=== Main App Entitlements ==="
           codesign -d --entitlements - "$APP_PATH"
@@ -91,16 +193,16 @@ jobs:
           echo "=== Extension Entitlements ==="
           codesign -d --entitlements - "$APPEX_PATH"
 
-          # Fail if App Groups entitlement is missing from either binary
-          codesign -d --entitlements - "$APP_PATH" 2>&1 | grep -q "application-groups" \
-            || { echo "ERROR: App Groups missing from main app"; exit 1; }
-          codesign -d --entitlements - "$APPEX_PATH" 2>&1 | grep -q "application-groups" \
-            || { echo "ERROR: App Groups missing from extension"; exit 1; }
+          # Fail if the expected App Group is missing from either binary
+          codesign -d --entitlements - "$APP_PATH" 2>&1 | grep -q "$APP_GROUP_ID" \
+            || { echo "ERROR: Expected App Group missing from main app"; exit 1; }
+          codesign -d --entitlements - "$APPEX_PATH" 2>&1 | grep -q "$APP_GROUP_ID" \
+            || { echo "ERROR: Expected App Group missing from extension"; exit 1; }
 
           echo ""
           echo "App Groups entitlement confirmed in both binaries."
 
-      - name: Create unsigned IPA
+      - name: Create IPA
         id: ipa
         run: |
           # Locate the .app bundle inside the archive
