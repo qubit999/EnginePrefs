@@ -42,7 +42,6 @@ jobs:
           sed -i '' \
             -e 's/CODE_SIGN_STYLE = Automatic/CODE_SIGN_STYLE = Manual/g' \
             -e 's/DEVELOPMENT_TEAM = [^;]*/DEVELOPMENT_TEAM = ""/g' \
-            -e 's/CODE_SIGN_ENTITLEMENTS = [^;]*;//g' \
             EnginePrefs.xcodeproj/project.pbxproj
 
       - name: Build archive
@@ -61,6 +60,45 @@ jobs:
             PROVISIONING_PROFILE_SPECIFIER=""
           # Verify archive was created
           ls /tmp/EnginePrefs.xcarchive
+
+      - name: Ad-hoc sign binaries with entitlements
+        run: |
+          APP_PATH=$(find /tmp/EnginePrefs.xcarchive/Products/Applications -maxdepth 1 -name "*.app" | head -1)
+          APPEX_PATH=$(find "$APP_PATH" -name "*.appex" | head -1)
+
+          echo "App:       $APP_PATH"
+          echo "Extension: $APPEX_PATH"
+
+          # Sign the extension first (nested bundles before the container)
+          codesign -f -s - \
+            --entitlements "EnginePrefs Extension/EnginePrefs_Extension.entitlements" \
+            "$APPEX_PATH"
+
+          # Then sign the main app
+          codesign -f -s - \
+            --entitlements "EnginePrefs/EnginePrefs.entitlements" \
+            "$APP_PATH"
+
+      - name: Verify entitlements are embedded
+        run: |
+          APP_PATH=$(find /tmp/EnginePrefs.xcarchive/Products/Applications -maxdepth 1 -name "*.app" | head -1)
+          APPEX_PATH=$(find "$APP_PATH" -name "*.appex" | head -1)
+
+          echo "=== Main App Entitlements ==="
+          codesign -d --entitlements - "$APP_PATH"
+
+          echo ""
+          echo "=== Extension Entitlements ==="
+          codesign -d --entitlements - "$APPEX_PATH"
+
+          # Fail if App Groups entitlement is missing from either binary
+          codesign -d --entitlements - "$APP_PATH" 2>&1 | grep -q "application-groups" \
+            || { echo "ERROR: App Groups missing from main app"; exit 1; }
+          codesign -d --entitlements - "$APPEX_PATH" 2>&1 | grep -q "application-groups" \
+            || { echo "ERROR: App Groups missing from extension"; exit 1; }
+
+          echo ""
+          echo "App Groups entitlement confirmed in both binaries."
 
       - name: Create unsigned IPA
         id: ipa
