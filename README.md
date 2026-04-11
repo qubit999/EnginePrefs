@@ -70,8 +70,9 @@ After installing the app on your device:
 1. Open **Settings**.
 2. Go to **Apps** > **Safari** > **Extensions**.
 3. Turn on **EnginePrefs**.
-4. Set the permission to **Allow** for all websites.
-5. Follow the App's instructions
+4. Open **Safari**, open the Safari menu, and tap **EnginePrefs** once.
+5. When Safari asks for access, allow it for all websites.
+6. Follow the app's instructions.
 
 ## License
 

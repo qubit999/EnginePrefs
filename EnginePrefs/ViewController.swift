@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
 
     private func buildUI() {
-        let icon = UIImageView(image: UIImage(named: "Icon"))
+        let icon = UIImageView(image: UIImage(named: "LargeIcon"))
         icon.contentMode = .scaleAspectFit
 
         // Wrap the icon so it stays centered while the stack uses .fill
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         enableTitle.textColor = .label
 
         let enableSteps = UILabel()
-        enableSteps.text = "1. Open Settings\n2. Scroll to Apps \u{2192} Safari\n3. Tap Extensions\n4. Turn on EnginePrefs\n5. Set permission to \"Allow\" for all websites"
+        enableSteps.text = "1. Open Settings\n2. Scroll to Apps \u{2192} Safari\n3. Tap Extensions\n4. Turn on EnginePrefs\n5. In Safari, open the menu and tap EnginePrefs\n6. When Safari asks, allow it for all websites"
         enableSteps.font = .systemFont(ofSize: 14)
         enableSteps.textColor = .secondaryLabel
         enableSteps.numberOfLines = 0
