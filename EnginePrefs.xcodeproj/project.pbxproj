@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA14EE6A2F879B0A006917FD /* EnginePrefs Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FA14EE692F879B0A006917FD /* EnginePrefs Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FAC98A702FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FAC98A692FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,27 @@
 			remoteGlobalIDString = FA14EE682F879B0A006917FD;
 			remoteInfo = "EnginePrefs Extension";
 		};
+		FAC98A442FE3296200DA38B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA14EE2E2F879B08006917FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAC98A342FE3296100DA38B6;
+			remoteInfo = "EnginePrefs macOS";
+		};
+		FAC98A4E2FE3296200DA38B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA14EE2E2F879B08006917FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAC98A342FE3296100DA38B6;
+			remoteInfo = "EnginePrefs macOS";
+		};
+		FAC98A6E2FE32E9600DA38B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA14EE2E2F879B08006917FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAC98A682FE32E9600DA38B6;
+			remoteInfo = "EnginePrefs Extension macOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +68,17 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAC98A752FE32E9600DA38B6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FAC98A702FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +86,20 @@
 		FA14EE532F879B0A006917FD /* EnginePrefsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnginePrefsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA14EE5D2F879B0A006917FD /* EnginePrefsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnginePrefsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA14EE692F879B0A006917FD /* EnginePrefs Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EnginePrefs Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC98A352FE3296100DA38B6 /* EnginePrefs macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EnginePrefs macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC98A432FE3296200DA38B6 /* EnginePrefs macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EnginePrefs macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC98A4D2FE3296200DA38B6 /* EnginePrefs macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EnginePrefs macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC98A692FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EnginePrefs Extension macOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DC9EB829925EAE00C465CF2E /* Exceptions for "EnginePrefs Extension" folder in "EnginePrefs Extension macOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FAC98A682FE32E9600DA38B6 /* EnginePrefs Extension macOS */;
+		};
 		FA14EE832F879B0A006917FD /* Exceptions for "EnginePrefs" folder in "EnginePrefs" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -83,11 +127,15 @@
 		};
 		FA14EE562F879B0A006917FD /* EnginePrefsTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = EnginePrefsTests;
 			sourceTree = "<group>";
 		};
 		FA14EE602F879B0A006917FD /* EnginePrefsUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = EnginePrefsUITests;
 			sourceTree = "<group>";
 		};
@@ -95,12 +143,34 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				FA14EE872F879B0A006917FD /* Exceptions for "EnginePrefs Extension" folder in "EnginePrefs Extension" target */,
+				DC9EB829925EAE00C465CF2E /* Exceptions for "EnginePrefs Extension" folder in "EnginePrefs Extension macOS" target */,
 			);
 			explicitFolders = (
 				Resources/_locales,
 				Resources/images,
 			);
 			path = "EnginePrefs Extension";
+			sourceTree = "<group>";
+		};
+		FAC98A362FE3296100DA38B6 /* EnginePrefs macOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = "EnginePrefs macOS";
+			sourceTree = "<group>";
+		};
+		FAC98A462FE3296200DA38B6 /* EnginePrefs macOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = "EnginePrefs macOSTests";
+			sourceTree = "<group>";
+		};
+		FAC98A502FE3296200DA38B6 /* EnginePrefs macOSUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = "EnginePrefs macOSUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -134,6 +204,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAC98A322FE3296100DA38B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A402FE3296200DA38B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A4A2FE3296200DA38B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A662FE32E9600DA38B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -144,6 +242,9 @@
 				FA14EE562F879B0A006917FD /* EnginePrefsTests */,
 				FA14EE602F879B0A006917FD /* EnginePrefsUITests */,
 				FA14EE6D2F879B0A006917FD /* EnginePrefs Extension */,
+				FAC98A362FE3296100DA38B6 /* EnginePrefs macOS */,
+				FAC98A462FE3296200DA38B6 /* EnginePrefs macOSTests */,
+				FAC98A502FE3296200DA38B6 /* EnginePrefs macOSUITests */,
 				FA14EE372F879B08006917FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,6 +256,10 @@
 				FA14EE532F879B0A006917FD /* EnginePrefsTests.xctest */,
 				FA14EE5D2F879B0A006917FD /* EnginePrefsUITests.xctest */,
 				FA14EE692F879B0A006917FD /* EnginePrefs Extension.appex */,
+				FAC98A352FE3296100DA38B6 /* EnginePrefs macOS.app */,
+				FAC98A432FE3296200DA38B6 /* EnginePrefs macOSTests.xctest */,
+				FAC98A4D2FE3296200DA38B6 /* EnginePrefs macOSUITests.xctest */,
+				FAC98A692FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,8 +285,6 @@
 				FA14EE382F879B08006917FD /* EnginePrefs */,
 			);
 			name = EnginePrefs;
-			packageProductDependencies = (
-			);
 			productName = EnginePrefs;
 			productReference = FA14EE362F879B08006917FD /* EnginePrefs.app */;
 			productType = "com.apple.product-type.application";
@@ -203,8 +306,6 @@
 				FA14EE562F879B0A006917FD /* EnginePrefsTests */,
 			);
 			name = EnginePrefsTests;
-			packageProductDependencies = (
-			);
 			productName = EnginePrefsTests;
 			productReference = FA14EE532F879B0A006917FD /* EnginePrefsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -226,8 +327,6 @@
 				FA14EE602F879B0A006917FD /* EnginePrefsUITests */,
 			);
 			name = EnginePrefsUITests;
-			packageProductDependencies = (
-			);
 			productName = EnginePrefsUITests;
 			productReference = FA14EE5D2F879B0A006917FD /* EnginePrefsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -248,10 +347,92 @@
 				FA14EE6D2F879B0A006917FD /* EnginePrefs Extension */,
 			);
 			name = "EnginePrefs Extension";
-			packageProductDependencies = (
-			);
 			productName = "EnginePrefs Extension";
 			productReference = FA14EE692F879B0A006917FD /* EnginePrefs Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		FAC98A342FE3296100DA38B6 /* EnginePrefs macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC98A552FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOS" */;
+			buildPhases = (
+				FAC98A312FE3296100DA38B6 /* Sources */,
+				FAC98A322FE3296100DA38B6 /* Frameworks */,
+				FAC98A332FE3296100DA38B6 /* Resources */,
+				FAC98A752FE32E9600DA38B6 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAC98A6F2FE32E9600DA38B6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FAC98A362FE3296100DA38B6 /* EnginePrefs macOS */,
+			);
+			name = "EnginePrefs macOS";
+			productName = "EnginePrefs macOS";
+			productReference = FAC98A352FE3296100DA38B6 /* EnginePrefs macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FAC98A422FE3296200DA38B6 /* EnginePrefs macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC98A582FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOSTests" */;
+			buildPhases = (
+				FAC98A3F2FE3296200DA38B6 /* Sources */,
+				FAC98A402FE3296200DA38B6 /* Frameworks */,
+				FAC98A412FE3296200DA38B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAC98A452FE3296200DA38B6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FAC98A462FE3296200DA38B6 /* EnginePrefs macOSTests */,
+			);
+			name = "EnginePrefs macOSTests";
+			productName = "EnginePrefs macOSTests";
+			productReference = FAC98A432FE3296200DA38B6 /* EnginePrefs macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FAC98A4C2FE3296200DA38B6 /* EnginePrefs macOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC98A5B2FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOSUITests" */;
+			buildPhases = (
+				FAC98A492FE3296200DA38B6 /* Sources */,
+				FAC98A4A2FE3296200DA38B6 /* Frameworks */,
+				FAC98A4B2FE3296200DA38B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAC98A4F2FE3296200DA38B6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FAC98A502FE3296200DA38B6 /* EnginePrefs macOSUITests */,
+			);
+			name = "EnginePrefs macOSUITests";
+			productName = "EnginePrefs macOSUITests";
+			productReference = FAC98A4D2FE3296200DA38B6 /* EnginePrefs macOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		FAC98A682FE32E9600DA38B6 /* EnginePrefs Extension macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC98A722FE32E9600DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs Extension macOS" */;
+			buildPhases = (
+				FAC98A652FE32E9600DA38B6 /* Sources */,
+				FAC98A662FE32E9600DA38B6 /* Frameworks */,
+				FAC98A672FE32E9600DA38B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FA14EE6D2F879B0A006917FD /* EnginePrefs Extension */,
+			);
+			name = "EnginePrefs Extension macOS";
+			productName = "EnginePrefs Extension macOS";
+			productReference = FAC98A692FE32E9600DA38B6 /* EnginePrefs Extension macOS.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +442,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2640;
+				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					FA14EE352F879B08006917FD = {
@@ -277,6 +458,20 @@
 					};
 					FA14EE682F879B0A006917FD = {
 						CreatedOnToolsVersion = 26.4;
+					};
+					FAC98A342FE3296100DA38B6 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					FAC98A422FE3296200DA38B6 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = FAC98A342FE3296100DA38B6;
+					};
+					FAC98A4C2FE3296200DA38B6 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = FAC98A342FE3296100DA38B6;
+					};
+					FAC98A682FE32E9600DA38B6 = {
+						CreatedOnToolsVersion = 26.5;
 					};
 				};
 			};
@@ -298,6 +493,10 @@
 				FA14EE522F879B0A006917FD /* EnginePrefsTests */,
 				FA14EE5C2F879B0A006917FD /* EnginePrefsUITests */,
 				FA14EE682F879B0A006917FD /* EnginePrefs Extension */,
+				FAC98A342FE3296100DA38B6 /* EnginePrefs macOS */,
+				FAC98A422FE3296200DA38B6 /* EnginePrefs macOSTests */,
+				FAC98A4C2FE3296200DA38B6 /* EnginePrefs macOSUITests */,
+				FAC98A682FE32E9600DA38B6 /* EnginePrefs Extension macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +524,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FA14EE672F879B0A006917FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A332FE3296100DA38B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A412FE3296200DA38B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A4B2FE3296200DA38B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A672FE32E9600DA38B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,6 +589,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAC98A312FE3296100DA38B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A3F2FE3296200DA38B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A492FE3296200DA38B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAC98A652FE32E9600DA38B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -379,6 +634,21 @@
 			isa = PBXTargetDependency;
 			target = FA14EE682F879B0A006917FD /* EnginePrefs Extension */;
 			targetProxy = FA14EE6B2F879B0A006917FD /* PBXContainerItemProxy */;
+		};
+		FAC98A452FE3296200DA38B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAC98A342FE3296100DA38B6 /* EnginePrefs macOS */;
+			targetProxy = FAC98A442FE3296200DA38B6 /* PBXContainerItemProxy */;
+		};
+		FAC98A4F2FE3296200DA38B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAC98A342FE3296100DA38B6 /* EnginePrefs macOS */;
+			targetProxy = FAC98A4E2FE3296200DA38B6 /* PBXContainerItemProxy */;
+		};
+		FAC98A6F2FE32E9600DA38B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAC98A682FE32E9600DA38B6 /* EnginePrefs Extension macOS */;
+			targetProxy = FAC98A6E2FE32E9600DA38B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -458,7 +728,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EnginePrefs/EnginePrefs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2AW3UV2BX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EnginePrefs/Info.plist;
@@ -466,8 +736,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,12 +753,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -499,7 +772,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EnginePrefs/EnginePrefs.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2AW3UV2BX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EnginePrefs/Info.plist;
@@ -507,8 +780,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -524,12 +797,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -738,6 +1014,236 @@
 			};
 			name = Release;
 		};
+		FAC98A562FE3296200DA38B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "EnginePrefs macOS/EnginePrefs_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EnginePrefs macOS/Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FAC98A572FE3296200DA38B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "EnginePrefs macOS/EnginePrefs_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EnginePrefs macOS/Info.plist";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FAC98A592FE3296200DA38B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexsla.EnginePrefs-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EnginePrefs macOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EnginePrefs macOS";
+			};
+			name = Debug;
+		};
+		FAC98A5A2FE3296200DA38B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexsla.EnginePrefs-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EnginePrefs macOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EnginePrefs macOS";
+			};
+			name = Release;
+		};
+		FAC98A5C2FE3296200DA38B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexsla.EnginePrefs-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "EnginePrefs macOS";
+			};
+			name = Debug;
+		};
+		FAC98A5D2FE3296200DA38B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexsla.EnginePrefs-macOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "EnginePrefs macOS";
+			};
+			name = Release;
+		};
+		FAC98A732FE32E9600DA38B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "EnginePrefs Extension/EnginePrefs_Extension_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EnginePrefs Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EnginePrefs Extension macOS";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FAC98A742FE32E9600DA38B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "EnginePrefs Extension/EnginePrefs_Extension_macOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AW3UV2BX4;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EnginePrefs Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "EnginePrefs Extension macOS";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexsla.EnginePrefs.Extension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -782,6 +1288,42 @@
 			buildConfigurations = (
 				FA14EE922F879B0A006917FD /* Debug */,
 				FA14EE932F879B0A006917FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC98A552FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC98A562FE3296200DA38B6 /* Debug */,
+				FAC98A572FE3296200DA38B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC98A582FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC98A592FE3296200DA38B6 /* Debug */,
+				FAC98A5A2FE3296200DA38B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC98A5B2FE3296200DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs macOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC98A5C2FE3296200DA38B6 /* Debug */,
+				FAC98A5D2FE3296200DA38B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC98A722FE32E9600DA38B6 /* Build configuration list for PBXNativeTarget "EnginePrefs Extension macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC98A732FE32E9600DA38B6 /* Debug */,
+				FAC98A742FE32E9600DA38B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
